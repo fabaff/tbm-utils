@@ -26,22 +26,22 @@ TEST_FILEPATHS = list(TEST_DIR.iterdir())
 THIS = pendulum.now()
 LAST = THIS.start_of('year').previous(pendulum.MONDAY)
 
-THIS_YEAR = pendulum.period(
+THIS_YEAR = pendulum.interval(
 	THIS.start_of('year'),
 	THIS.end_of('year'),
 )
 
-TODAY = pendulum.period(
+TODAY = pendulum.interval(
 	THIS.start_of('day'),
 	THIS.end_of('day'),
 )
 
-YESTERDAY = pendulum.period(
+YESTERDAY = pendulum.interval(
 	THIS.subtract(days=1).start_of('day'),
 	THIS.subtract(days=1).end_of('day'),
 )
 
-LAST_YEAR = pendulum.period(
+LAST_YEAR = pendulum.interval(
 	LAST.start_of('year'),
 	LAST.end_of('year'),
 )
@@ -83,7 +83,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
-				pendulum.period(
+				pendulum.interval(
 					pendulum.DateTime.min,
 					THIS.start_of('day'),
 				)
@@ -95,7 +95,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
-				pendulum.period(
+				pendulum.interval(
 					pendulum.DateTime.min,
 					THIS.add(days=1),
 				)
@@ -107,7 +107,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
-				pendulum.period(
+				pendulum.interval(
 					THIS.add(days=1),
 					pendulum.DateTime.max,
 				)
@@ -119,7 +119,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			creation_dates=[
-				pendulum.period(
+				pendulum.interval(
 					THIS.start_of('day'),
 					pendulum.DateTime.max,
 				)
@@ -159,7 +159,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
-				pendulum.period(
+				pendulum.interval(
 					pendulum.DateTime.min,
 					THIS.start_of('day'),
 				)
@@ -171,7 +171,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
-				pendulum.period(
+				pendulum.interval(
 					pendulum.DateTime.min,
 					THIS.add(days=1),
 				)
@@ -183,7 +183,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
-				pendulum.period(
+				pendulum.interval(
 					THIS.add(days=1),
 					pendulum.DateTime.max,
 				)
@@ -195,7 +195,7 @@ def test_filter_filepaths_by_dates():
 		filter_filepaths_by_dates(
 			TEST_FILEPATHS,
 			modification_dates=[
-				pendulum.period(
+				pendulum.interval(
 					THIS.start_of('day'),
 					pendulum.DateTime.max,
 				)

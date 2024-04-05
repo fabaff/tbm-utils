@@ -60,35 +60,35 @@ def test_create_parser_filter_dates():
 		]
 	)
 
-	assert args.created_in == pendulum.period(
+	assert args.created_in == pendulum.interval(
 		pendulum.datetime(2019, 8, 1, tz='local'),
 		pendulum.datetime(2019, 8, 31, tz='local').end_of('day')
 	)
-	assert args.created_on == pendulum.period(
+	assert args.created_on == pendulum.interval(
 		pendulum.datetime(2019, 8, 22, tz='local').start_of('day'),
 		pendulum.datetime(2019, 8, 22, tz='local').end_of('day')
 	)
-	assert args.created_before == pendulum.period(
+	assert args.created_before == pendulum.interval(
 		pendulum.DateTime.min,
 		pendulum.datetime(2019, 8, 22, 16, tz='local')
 	)
-	assert args.created_after == pendulum.period(
+	assert args.created_after == pendulum.interval(
 		pendulum.datetime(2019, 8, 22, 16, tz='local'),
 		pendulum.DateTime.max
 	)
-	assert args.modified_in == pendulum.period(
+	assert args.modified_in == pendulum.interval(
 		pendulum.datetime(2019, 8, 1, tz='local'),
 		pendulum.datetime(2019, 8, 31, tz='local').end_of('day')
 	)
-	assert args.modified_on == pendulum.period(
+	assert args.modified_on == pendulum.interval(
 		pendulum.datetime(2019, 8, 22, tz='local').start_of('day'),
 		pendulum.datetime(2019, 8, 22, tz='local').end_of('day')
 	)
-	assert args.modified_before == pendulum.period(
+	assert args.modified_before == pendulum.interval(
 		pendulum.DateTime.min,
 		pendulum.datetime(2019, 8, 22, 16, tz='local')
 	)
-	assert args.modified_after == pendulum.period(
+	assert args.modified_after == pendulum.interval(
 		pendulum.datetime(2019, 8, 22, 16, tz='local'),
 		pendulum.DateTime.max
 	)
